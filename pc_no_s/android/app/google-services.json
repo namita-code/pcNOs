@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "872448584521",
+    "project_id": "pcnos-fbdbb",
+    "storage_bucket": "pcnos-fbdbb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872448584521:android:ca61d76ce964ddd188c898",
+        "android_client_info": {
+          "package_name": "com.example.pc_no_s"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1E1ypqRZtvNaEKtIWeRj142vOhXU-1Rs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
