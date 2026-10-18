@@ -25,7 +25,7 @@ A full-stack wellness companion for people managing **PCOS (Polycystic Ovary Syn
 | Feature | What it does |
 |---|---|
 | 🔐 **Authentication** | Email/password sign-up and sign-in using Firebase Auth |
-| 🧬 **Severity assessment** | A guided multi-step form collects vitals, symptoms, cycle data and optional hormone values. A Random Forest model classifies severity as **Mild / Moderate / Severe** |
+| 🧬 **Severity assessment** | A guided multi-step form collects vitals, symptoms, cycle data and hormone values. A Random Forest model classifies severity as **Mild / Moderate / Severe** |
 | 📝 **AI wellness plan** | OpenAI's open-weight `gpt-oss-120b` LLM, served by Groq, generates a structured, non-clinical plan covering daily routine, weekly habits, diet, exercise, general supplements, lifestyle changes, things to avoid, progress tracking and a motivational note |
 | 💾 **Local persistence** | Assessment inputs and the generated plan are cached with `shared_preferences`, so returning users see their plan instantly. A refresh action regenerates it |
 | 🎨 **Supportive UI** | Material 3, Poppins typography, soft gradients and rendered Markdown for the plan |
@@ -236,13 +236,6 @@ Errors are returned as `{ "error": "<message>" }`, with status `400` for empty i
 
 ---
 
-## 🛣 Roadmap
-
-- [ ] Add unit tests for `predict_service` and widget tests for the assessment flow
-- [ ] Add input validation schemas on the API (e.g. Pydantic)
-- [ ] Containerize the backend with Docker and deploy it
-
----
 
 ## 💗 Vision
 
