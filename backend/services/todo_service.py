@@ -2,7 +2,7 @@ import requests
 import os
 
 # Load Perplexity API Key
-PPLX_API_KEY = os.environ.get("PPLX_API_KEY")
+API_KEY = os.environ.get("API_KEY")
 
 def generate_prompt(user_data: dict) -> str:
     return f"""
@@ -74,8 +74,8 @@ Output should feel like a personal coach helping the user on a healing journey.
 
 
 def generate_todo_plan(user_data: dict) -> str:
-    if not PPLX_API_KEY:
-        raise Exception("Perplexity API key missing. Set PPLX_API_KEY environment variable.")
+    if not API_KEY:
+        raise Exception("Perplexity API key missing. Set API_KEY environment variable.")
 
     prompt = generate_prompt(user_data)
 
@@ -83,7 +83,7 @@ def generate_todo_plan(user_data: dict) -> str:
 
     headers = {
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {PPLX_API_KEY}",
+        "Authorization": f"Bearer {API_KEY}",
     }
 
     payload = {

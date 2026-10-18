@@ -1,0 +1,7 @@
+flask>=3.0
+flask-cors>=4.0
+numpy>=2.0
+joblib>=1.4
+# Pinned: the pickled model in model/ must be loaded with the same scikit-learn version it was saved with
+scikit-learn==1.6.1
+requests>=2.31
