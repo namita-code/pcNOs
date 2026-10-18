@@ -1,7 +1,7 @@
 import requests
 import os
 
-# Load Perplexity API Key
+# Load Groq API Key
 API_KEY = os.environ.get("API_KEY")
 
 def generate_prompt(user_data: dict) -> str:
@@ -75,11 +75,11 @@ Output should feel like a personal coach helping the user on a healing journey.
 
 def generate_todo_plan(user_data: dict) -> str:
     if not API_KEY:
-        raise Exception("Perplexity API key missing. Set API_KEY environment variable.")
+        raise Exception("Groq API key missing. Set API_KEY environment variable.")
 
     prompt = generate_prompt(user_data)
 
-    url = "https://api.perplexity.ai/chat/completions"
+    url = "https://api.groq.com/openai/v1/chat/completions"
 
     headers = {
         "Content-Type": "application/json",
@@ -87,7 +87,7 @@ def generate_todo_plan(user_data: dict) -> str:
     }
 
     payload = {
-        "model": "sonar-pro",
+        "model": "openai/gpt-oss-120b",
         "messages": [
             {"role": "system", "content": "You are a medical assistant specialized in PCOS management and safe lifestyle recommendations."},
             {"role": "user", "content": prompt}
@@ -100,7 +100,7 @@ def generate_todo_plan(user_data: dict) -> str:
     response = requests.post(url, json=payload, headers=headers)
 
     if response.status_code != 200:
-        raise Exception(f"Perplexity API Error: {response.text}")
+        raise Exception(f"Groq API Error: {response.text}")
 
     result = response.json()
     return result["choices"][0]["message"]["content"]

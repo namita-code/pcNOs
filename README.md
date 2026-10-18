@@ -26,7 +26,7 @@ A full-stack wellness companion for people managing **PCOS (Polycystic Ovary Syn
 |---|---|
 | 🔐 **Authentication** | Email/password sign-up and sign-in using Firebase Auth |
 | 🧬 **Severity assessment** | A guided multi-step form collects vitals, symptoms, cycle data and optional hormone values. A Random Forest model classifies severity as **Mild / Moderate / Severe** |
-| 📝 **AI wellness plan** | Perplexity's `sonar-pro` LLM generates a structured, non-clinical plan covering daily routine, weekly habits, diet, exercise, general supplements, lifestyle changes, things to avoid, progress tracking and a motivational note |
+| 📝 **AI wellness plan** | OpenAI's open-weight `gpt-oss-120b` LLM, served by Groq, generates a structured, non-clinical plan covering daily routine, weekly habits, diet, exercise, general supplements, lifestyle changes, things to avoid, progress tracking and a motivational note |
 | 💾 **Local persistence** | Assessment inputs and the generated plan are cached with `shared_preferences`, so returning users see their plan instantly. A refresh action regenerates it |
 | 🎨 **Supportive UI** | Material 3, Poppins typography, soft gradients and rendered Markdown for the plan |
 
@@ -42,7 +42,7 @@ flowchart LR
     F -- "POST /predict" --> B["Flask API<br/>(backend/)"]
     F -- "POST /todo" --> B
     B --> M["StandardScaler + RandomForest<br/>(scikit-learn .pkl)"]
-    B -- "Prompted chat completion" --> P[Perplexity API<br/>sonar-pro]
+    B -- "Prompted chat completion" --> P[Groq API<br/>openai/gpt-oss-120b]
 ```
 
 **Request flow**
@@ -62,7 +62,7 @@ flowchart LR
 | **Networking / Storage** | `http` (singleton client), `shared_preferences` |
 | **Backend** | Python, Flask, Flask-CORS |
 | **ML** | scikit-learn (`RandomForestClassifier`, `StandardScaler`), NumPy, joblib |
-| **Generative AI** | Perplexity Chat Completions API (`sonar-pro`) |
+| **Generative AI** | Groq Chat Completions API (`openai/gpt-oss-120b`) |
 
 ---
 
@@ -78,7 +78,7 @@ flowchart LR
 │   │   └── scaler.pkl                # Fitted StandardScaler
 │   └── services/
 │       ├── predict_service.py   # Feature engineering + inference
-│       └── todo_service.py      # Prompt building + Perplexity API call
+│       └── todo_service.py      # Prompt building + Groq API call
 │
 ├── frontend/                    # Flutter app (Android, iOS, Web, Desktop)
 │   ├── lib/
@@ -105,7 +105,7 @@ flowchart LR
 
 - **Python 3.10+** and `pip`
 - **Flutter SDK** (Dart ^3.9.2). Check your setup with `flutter doctor`
-- A **Perplexity API key**, needed only for the wellness plan endpoint ([get one here](https://www.perplexity.ai/settings/api))
+- A free **Groq API key**, needed only for the wellness plan endpoint ([get one here](https://console.groq.com/keys))
 
 ### 1. Clone
 
@@ -127,7 +127,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Set your Perplexity API key:
+Set your Groq API key:
 
 ```bash
 # Windows (cmd)
