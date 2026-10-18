@@ -238,12 +238,9 @@ Errors are returned as `{ "error": "<message>" }`, with status `400` for empty i
 
 ## 🛣 Roadmap
 
-- [ ] Move `baseUrl` and secrets into environment-based config (`--dart-define`, `.env`)
-- [ ] Sync user plans to Firestore across devices
 - [ ] Add unit tests for `predict_service` and widget tests for the assessment flow
 - [ ] Add input validation schemas on the API (e.g. Pydantic)
 - [ ] Containerize the backend with Docker and deploy it
-- [ ] Build out the Daily Log, Progress, Learn and Reminders sections linked from the Home dashboard
 
 ---
 
